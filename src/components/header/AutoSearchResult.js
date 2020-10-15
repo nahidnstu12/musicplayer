@@ -6,16 +6,16 @@ function AutoSearchResult({results,onSearchSelect}) {
     let renderResult = [];
     if(results){
         renderResult = results.map((result,ind)=>(
-            <ListItem key={ind} onClick={()=>onSearchSelect(result[0])} button>
+            <ListItem key={ind} onClick={()=>onSearchSelect(result)} button>
                 <ListItemIcon style={{ paddingLeft:"16px",marginRight:"9px"}}>
                     <SearchIcon />
                 </ListItemIcon>
-                <ListItemText primary={result[0]} />
-            </ListItem>
+                <ListItemText primary={result} />
+            </ListItem>           
         ))
     }
     return (
-        <List>
+        <List style={{ marginTop:"12px" }}>
             {renderResult}
         </List>
     )

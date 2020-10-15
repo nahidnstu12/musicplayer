@@ -2,7 +2,7 @@ import React,{useContext,useState,useEffect} from 'react';
 import {InputBase,IconButton,Popper,CircularProgress,Grid} from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { GlobalContex } from "../GlobalState";
-import suggestSearch from "../../apis/SuggestSearch";
+// import suggestSearch from "../../apis/SuggestSearch";
 // import AutoSearchResult from "./AutoSearchResult";
 import youtubeSearch from "../../apis/youtubeSearch";
 
@@ -13,38 +13,45 @@ function SearchBox() {
     const {searchState,setSearchResult,setSearchState} = useContext(GlobalContex);
 
     const [searchQuery,setSearchQuery] = useState("");
-    const [autoSearchData,setAutoSearch] = useState("");
+    // const [autoSearchData,setAutoSearch] = useState("");
     const [ytSearchQuery,setYtSearchQuery] = useState(null);
-    const [ytSearchData,setYtSearch] = useState([]);
+    // const [ytSearchData,setYtSearch] = useState([]);
     const [isPoperOpen,setPopper] = useState(true);
 
-    // get back the selected search data
-    const onSearchSelect = result =>{
-        setYtSearchQuery(result);
-        setSearchQuery(result);
-        //when user selects then search on youtube
-        setSearchState("searching");
-    }
+    // **get back the selected search data**
+    // const onSearchSelect = result =>{
+    //     setYtSearchQuery(result);
+    //     setSearchQuery(result);
+    //     //when user selects then search on youtube
+    //     setSearchState("searching");
+    // }
 
-    const userSearched = () =>{
-        setYtSearchQuery(searchQuery);
-    }
+    // const userSearched = () =>{
+    //     setYtSearchQuery(searchQuery);
+    // }
     const onTyped = e =>{
         setSearchQuery(e.target.value);
-        getAutocomplete();
+        //getAutocomplete();
     }
 
-    // get autoComplete data from api
-    const getAutocomplete = async ()=>{
-        const res = await suggestSearch.get("",{
-            params:{
-                q: searchQuery
-            }
-        })
-        setAutoSearch(res.data[1]);
-        // console.log(typeof res.data+" "+JSON.parse(res.data[1]) +" "+searchQuery);
-        // console.log(res.data)
-    }
+    // **get autoComplete data from api**
+    // const getAutocomplete = async ()=>{
+    //     const res = await suggestSearch.get("",{
+    //         params:{
+    //             q: searchQuery
+    //         }
+    //     })
+    //     // extract data
+    //     const searchSuggestions = [];
+    //     res.data.split('[').forEach((ele, index) => {
+    //     if (!ele.split('"')[1] || index === 1) return;
+    //         searchSuggestions.push(ele.split('"')[1]);
+    //         setAutoSearch(searchSuggestions);
+    //     });
+    //     // console.log( autoSearchData)
+    // }
+    
+
     const onSearchSubmit = e =>{
         e.preventDefault();
         setSearchState("searching");
@@ -66,7 +73,7 @@ function SearchBox() {
         if(ytSearchQuery && ytSearchQuery !== ''){
             searchYt(ytSearchQuery);
         }
-    },[ytSearchQuery]);
+    },[ytSearchQuery,setSearchResult,setSearchState]);
 
     // show loading icon while we fetch the results from api
     const popperResult = () =>{
@@ -77,12 +84,10 @@ function SearchBox() {
                         <CircularProgress />
                     </Grid>
                 );
-            case "clicked":
-                // alert("clicked");
-                break
-                // return (
-                //     <AutoSearchResult results={autoSearchData} onSearchSelect={onSearchSelect} />
-                // );
+            // case "clicked":
+            //     return (
+            //         <AutoSearchResult results={autoSearchData} onSearchSelect={onSearchSelect} />
+            //     );
             case "completed":
                 setPopper(false);
                 break;
@@ -93,7 +98,6 @@ function SearchBox() {
     
     return (
         <div>
-
             <IconButton onClick={()=>setSearchState("home")} color="inherit" aria-label="Menu">
                 <ArrowBackIcon />
             </IconButton>

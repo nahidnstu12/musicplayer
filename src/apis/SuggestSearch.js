@@ -1,12 +1,13 @@
 import axios from "axios";
-// import jsonpAdapter from "axios-jsonp"
 
 export default axios.create({
   baseURL: "https://cors-anywhere.herokuapp.com/https://suggestqueries.google.com/complete/search?",
-//   adapter: jsonpAdapter,
+
+  // baseURL: "https://suggestqueries.google.com/complete/search?",
+
   params: {
     hl: "en", // Language
     ds: "yt", // Restrict lookup to youtube
-    client: "youtube" // force youtube style response, i.e. jsonp
+    client: "youtube", // force youtube style response, i.e. jsonp
   }
 });

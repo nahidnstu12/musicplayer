@@ -7,21 +7,28 @@ const entities = new Entities();
 
 function SearchResult({videos}) {
     let renderResults = "<div>Loading</div>";
-    const {currentVideoId,setCurrentVideoId} =useContext(GlobalContex);
+    const {currentVideoSnippet,setCurrentVideoSnippet} =useContext(GlobalContex);
 
-    const handleClick = id => {
-        setCurrentVideoId(id)
+    const handleClick = video => {
+        // set all the info of current clicked video in this object
+        setCurrentVideoSnippet({
+            id: video.id.videoId,
+            title: entities.decode(video.snippet.title),
+            channelTitle: entities.decode(video.snippet.channelTitle),
+            maxThumbnail: `https://img.youtube.com/vi/${video.id.videoId}/maxresdefault.jpg`,
+            hqThumbnail:  `https://img.youtube.com/vi/${video.id.videoId}/hqdefault.jpg`
+        })
     }
     renderResults = videos.map(video =>{
         const {snippet} = video;
         return(
             <div key={video.id.videoId}>
-                <ListItem alignItems="flex-start" button onClick={()=>handleClick(video.id.videoId)}>
+                <ListItem alignItems="flex-start" button onClick={()=>handleClick(video)}>
                     <ListItemAvatar>
                         <Avatar style={{ width:"60px", height:"60px"}}
-                        alt={video.snippet.title} src={video.snippet.thumbnails.default.url} />
+                        alt={video.snippet.title} src={video.snippet.thumbnails.high.url} />
                     </ListItemAvatar>
-                    <ListItemText primary={video.snippet.title} secondary={
+                    <ListItemText style={{ marginLeft:"10px"}} primary={video.snippet.title} secondary={
                         <Typography component="span" variant="body2" color="textPrimary">
                             {video.snippet.channelTitle}
                         </Typography>
