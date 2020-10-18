@@ -33,6 +33,9 @@ function HomePage() {
                     <img src={gIcon} height="25px" style={{ marginRight:"px"}} alt="Home"/>Sign In to Personalize
                 </Button>
             </Grid>
+            <Typography variant="h5" color="primary" style={{ padding:"10px"}}>
+            Listen to unilimited songs without any ads for free only on Ylight Music
+            </Typography>
             <Typography variant="body1" color="primary" style={craftedStyle}>
                 HandCrafted by Nahid
             </Typography>

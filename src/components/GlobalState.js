@@ -7,10 +7,14 @@ function GlobalState(props) {
     const [searchState,setSearchState] = useState("home");
     const [searchResult,setSearchResult] = useState(null);
     const [currentVideoSnippet,setCurrentVideoSnippet] = useState({});
+    const [menuOpen,setMenuOpen] = useState(true)
 
     return (
         <GlobalContex.Provider 
-        value={{ searchState,setSearchState,searchResult,setSearchResult,currentVideoSnippet,setCurrentVideoSnippet}}>
+        value={{ searchState,setSearchState,
+        searchResult,setSearchResult,
+        currentVideoSnippet,setCurrentVideoSnippet,
+        menuOpen,setMenuOpen}}>
             {props.children}
         </GlobalContex.Provider>
     )

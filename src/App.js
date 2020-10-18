@@ -7,6 +7,7 @@ import GlobalState from './components/GlobalState'
 import SimpleAppBar from './components/header/SimpleAppBar';
 import CurrentSection from './components/CurrentSection';
 import MainPlayer from './components/player/MainPlayer';
+import SwipeMenu from './components/SwipeMenu'
 
 function App() {
   const theme = createMuiTheme({
@@ -23,7 +24,8 @@ function App() {
       <SimpleAppBar />
       <CurrentSection />
       {/* <LoginPage /> */}
-      <MainPlayer />
+      {/* <MainPlayer /> */}
+      {/* <SwipeMenu /> */}
       </MuiThemeProvider>
     </GlobalState>
   );
