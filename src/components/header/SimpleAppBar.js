@@ -34,8 +34,10 @@ const useStyles = makeStyles((theme) => ({
   }
    function SimpleAppBar(props) {
     const classes = useStyles();
-    const {searchState,setSearchState} = useContext(GlobalContex);
-
+    const {searchState,setSearchState,setMenuOpen} = useContext(GlobalContex);
+    const setOpenMenu = ()=>{
+        setMenuOpen(true)
+    }
     const toggleSearch = () =>{
         if(searchState === "home"){
             return(
@@ -44,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
                     edge="start"
                     className={classes.menuButton}
                     color="inherit"
-                    aria-label="Menu">
+                    aria-label="Menu"
+                    onClick={setOpenMenu}>
                     <MenuIcon />
                 </IconButton>
                 <Typography className={classes.title} variant="h6" noWrap>

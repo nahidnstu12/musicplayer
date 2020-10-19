@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-// import LoginPage from './components/HomePage';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { pink,green } from "@material-ui/core/colors";
 import GlobalState from './components/GlobalState'
@@ -12,7 +11,7 @@ import SwipeMenu from './components/SwipeMenu'
 function App() {
   const theme = createMuiTheme({
 	  palette:{
-		  primary:green
+		  primary:pink
 	  },
 	  typography:{
 		  useNextVariants:true
@@ -23,9 +22,8 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <SimpleAppBar />
       <CurrentSection />
-      {/* <LoginPage /> */}
       {/* <MainPlayer /> */}
-      {/* <SwipeMenu /> */}
+      <SwipeMenu />
       </MuiThemeProvider>
     </GlobalState>
   );

@@ -53,7 +53,7 @@ function MainPlayer() {
     }
     const playerStyle = {
         position:"fixed",
-        top:0,
+        bottom:0,
         right:0,
         height:"100vh",
         width:"100%",
@@ -61,7 +61,7 @@ function MainPlayer() {
         paddingTop:"50px",
         display:"none",
         background:"#fff",
-        zIndex:"1220",
+        zIndex:"1400",
         display:"inline block",
         overflow:"hidden",
         transition:"all .3s ease"
@@ -71,9 +71,11 @@ function MainPlayer() {
     // // e.target.loadVideoById("M7lc1UVf-VE")
     // }
     if(playerState === 'minimized'){
-        playerStyle.height = "100px"
+        // playerStyle.height = "100px"
+        playerStyle.transform = "translateY(80%)"
         playerStyle.background = "#e91e63"
-        playerStyle.top = "calc(100vh-148px)"
+        // playerStyle.top = "calc(100vh-148px)"
+        playerStyle.zIndex = 0
         body.style.overflow="auto"
     }
     if(playerState === 'maximized'){

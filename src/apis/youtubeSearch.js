@@ -16,6 +16,7 @@ export default axios.create({
     part: "snippet",
     videoCategoryId: "10",
     type: "video",
+    // maxResults: 25,
     // key: selectRandomKey()
     // key:"AIzaSyCHhmQByh7jiD45NTShA6kF2KEjk-tZSPw" //youtube api key
     key:"AIzaSyBCqukaH8emuZ33VWrD6LmaJI7TFClqutY" //2nd api key

@@ -54,6 +54,7 @@ function SearchBox() {
 
     const onSearchSubmit = e =>{
         e.preventDefault();
+        e.target.lastChild.lastChild.blur()
         setSearchState("searching");
         setYtSearchQuery(searchQuery);
     }

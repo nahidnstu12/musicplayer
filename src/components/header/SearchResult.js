@@ -16,7 +16,7 @@ function SearchResult({videos}) {
             title: entities.decode(video.snippet.title),
             channelTitle: entities.decode(video.snippet.channelTitle),
             maxThumbnail: `https://img.youtube.com/vi/${video.id.videoId}/maxresdefault.jpg`,
-            hqThumbnail:  `https://img.youtube.com/vi/${video.id.videoId}/hqdefault.jpg`
+            sdThumbnail:  `https://img.youtube.com/vi/${video.id.videoId}/sddefault.jpg`
         })
     }
     renderResults = videos.map(video =>{
